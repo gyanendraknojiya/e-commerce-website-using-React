@@ -1,13 +1,33 @@
-
-import firebase from "firebase"
-import "firebase/auth"
-import "firebase/app"
-import firebaseConfig from '../firebase.config'
-
-
-
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+import firebaseConfig from "../firebase_config/firebase.config";
 
 firebase.initializeApp(firebaseConfig);
+
+export const createUserProfile = async (userAuth, otherData) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+  const snapshot = await userRef.get();
+
+  try {
+  const date = new Date();
+  const data = {
+    name: userAuth.displayName,
+    email: userAuth.email,
+    created_at: date
+  };
+
+    if (!snapshot.exists) {
+     await userRef.set({...data, ...otherData});
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  return userRef;
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
