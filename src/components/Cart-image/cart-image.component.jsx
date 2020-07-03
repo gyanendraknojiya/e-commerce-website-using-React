@@ -4,11 +4,13 @@ import './cart-image.style.scss'
 import {ToggleCart} from '../../Redux/Cart/Cart.actions'
 import {connect} from 'react-redux'
 
-function CartLogo({ToggleCart}){
+function CartLogo({ToggleCart, count}){
+  
     return (
         <div className='cart-logo' onClick={()=>ToggleCart()}>
             <CartImage />
-            <span className='count'>0</span>
+           
+            <span className='count'>{count}</span>
         </div>
     )
 }
@@ -16,5 +18,8 @@ function CartLogo({ToggleCart}){
 const mapDispatchToProps = (dispatch)=>({
     ToggleCart: ()=>dispatch(ToggleCart())
 })
-
-export default connect(null, mapDispatchToProps) (CartLogo);
+const mapStateToProps = ({cart: {CartItems}})=> ({
+    count: CartItems.reduce((a,b)=> a+b.quantity, 0)
+}
+     )
+export default connect(mapStateToProps, mapDispatchToProps) (CartLogo);
