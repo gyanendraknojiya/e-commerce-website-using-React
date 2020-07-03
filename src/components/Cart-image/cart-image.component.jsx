@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 
 function CartLogo({ToggleCart}){
     return (
-        <div className='cart-logo' onClick={ToggleCart}>
+        <div className='cart-logo' onClick={()=>ToggleCart()}>
             <CartImage />
             <span className='count'>0</span>
         </div>

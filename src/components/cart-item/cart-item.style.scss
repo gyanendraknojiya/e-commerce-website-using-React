@@ -1,0 +1,25 @@
+.cart-item{
+    display: flex;
+    height: auto;
+    width: auto;
+
+    .cart-img{
+        height: auto;
+        width: 30%;
+        object-fit: cover;
+        float: left;
+        margin-top: 10px;
+        margin-left: 10px;
+        display: inline-flex;
+
+    }
+    .name{
+        width: 70%;
+        margin-top: 20px;
+        margin-left: 10px;
+      font-size: 16px;
+    }
+    
+   
+}
+

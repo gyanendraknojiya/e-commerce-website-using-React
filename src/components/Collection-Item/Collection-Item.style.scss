@@ -4,6 +4,7 @@
     flex-direction: column;
     height: 350px;
     align-items: center;
+    position: relative;
   
     .image {
       width: 100%;
@@ -29,5 +30,16 @@
         width: 10%;
       }
     }
+
+    &:hover{
+      .inverted{
+        display: flex;
+        opacity: .7;
+      }
+      .image{
+        filter: blur(1px);
+      }
+    }
+    
   }
   
