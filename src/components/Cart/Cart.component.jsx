@@ -5,8 +5,10 @@ import { connect } from "react-redux";
 import CartItem from "../cart-item/cart-item.componant";
 import {CartItemSeclector} from '../../Redux/Cart/Cart.selector'
 import {createStructuredSelector} from 'reselect'
+import { Link } from 'react-router-dom'
+import {ToggleCart} from '../../Redux/Cart/Cart.actions'
 
-function Cart({CartItems}) {
+function Cart({CartItems, dispatch}) {
   return (
     <div className="cart-box">
     <div className='cart-items'>
@@ -17,7 +19,9 @@ function Cart({CartItems}) {
   }
   </div>
       <div className="cart-button">
-        <Button>Goto to Checkout</Button>
+      <Link to='/checkout'>
+        <Button onClick={()=>dispatch(ToggleCart())}>Goto to Checkout</Button>
+        </Link>
       </div>
     </div>
   );
