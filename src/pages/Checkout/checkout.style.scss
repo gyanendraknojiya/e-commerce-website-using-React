@@ -39,6 +39,12 @@
         &:last-child {
           width: 8%;
         }
+
+      
+      .arrow{
+          display: inline-flex;
+          margin: 0 10px;
+      }
       }
     }
   }
@@ -46,4 +52,7 @@
     float: right;
     font-size: 35px;
   }
+}
+.cursor-pointer{
+  cursor: pointer;
 }

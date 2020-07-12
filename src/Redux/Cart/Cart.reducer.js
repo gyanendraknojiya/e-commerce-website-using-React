@@ -1,4 +1,4 @@
-import { AddItemToCart } from './Cart.utils'
+import { AddItemToCart, DecreaseOneQuantity } from './Cart.utils'
 
 const INITIAL_STATE = {
   hidden: true,
@@ -15,8 +15,20 @@ const CartReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       CartItems: AddItemToCart(state.CartItems, action.payload),
-    };
-  } else {
+    }
+  } else if (action.type === "remove_item_from_cart") {
+    return {
+      ...state,
+      CartItems: state.CartItems.filter(item => item.id !== action.payload.id)
+    }
+  } 
+  else if (action.type === "decrease_one_quantity") {
+    return {
+      ...state,
+      CartItems: DecreaseOneQuantity(state.CartItems, action.payload)
+    }
+  } 
+  else {
     return state;
   }
 };

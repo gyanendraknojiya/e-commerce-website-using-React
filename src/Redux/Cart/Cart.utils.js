@@ -4,12 +4,22 @@ export const AddItemToCart = (CartItem, CartItemToAdd) => {
   );
 
   if (isItemExists) {
-  return  CartItem.map((item) =>
+    return CartItem.map((item) =>
       item.id === CartItemToAdd.id
         ? { ...item, quantity: item.quantity + 1 }
         : item
     );
   } else {
-  return [...CartItem, { ...CartItemToAdd, quantity: 1 }];
-}
+    return [...CartItem, { ...CartItemToAdd, quantity: 1 }];
+  }
+};
+
+export const DecreaseOneQuantity = (CartItem, DecreaseOne) => {
+  return CartItem.map((item) => {
+    if (item.id === DecreaseOne.id) {
+      return { ...item, quantity: item.quantity - 1 };
+    } else {
+      return item;
+    }
+  });
 };
